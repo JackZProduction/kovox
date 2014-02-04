@@ -1,0 +1,19 @@
+body{
+    font-family: Arial;
+}
+
+#gameContainer{
+    width:600px;
+    height:500px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-300px 0 0 -250px;
+    background-color:#000000;
+}
+
+#login{
+    color: white;
+    margin-top:200px;
+    text-align: center;    
+}

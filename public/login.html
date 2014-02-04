@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>
+            Login to NopToch
+        </title>
+        
+        <script src = 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js'></script>
+        <script src = '/socket.io/socket.io.js'></script>
+        <script src = 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'></script>
+
+        
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+        <div id="gameContainer">
+           
+           <div id='myStats' style="width: 150px; height: 180px; border: 1px solid white; float:right; margin-right:2px; margin-top:2px;">
+               <div id='username'></div>
+               
+           </div>
+           
+            <div id='login'>
+                <div style="width: 100%;">Setup an username:</div> <br/>
+                <input type="text" id='username' />
+                <input type="button" value="Play" id='play' />
+            </div>
+
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        <script>
+        
+        
+            jQuery(function($){
+                var socket = io.connect('http://localhost:8000');
+                var me;
+                
+                $('#play').click(function(){
+                    me = $('#username').val();
+					if (me){socket.emit('newUser', me);}
+                    
+                    
+                    
+                    
+                });
+                
+                socket.on('userCreated', function(userData){
+                    $('#username').text(userData);
+                    $('#login').fadeOut();
+                });
+                
+                
+                
+            });
+
+            
+        </script>
+    </body>
+    
+    
+</html>
